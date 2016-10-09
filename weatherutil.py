@@ -39,21 +39,20 @@ class WeatherUtil:
             string corresponding to icon path in img folder
         
     """    
-    def get_icon_for_conditions(self,iconName,lat=None,long=None):
+    def get_icon_for_conditions(self,iconName,lat,long):
         base_path = "img/"
         img_ext = ".png"
         night_icon = base_path + iconName + "night" + img_ext
         day_icon = base_path + iconName + img_ext
         unknown_icon = base_path + "unknown" + img_ext
         
-        if lat is not None and long is not None:
-            if self.is_night(lat, long):
-                if self.image_exits(night_icon):
-                    return night_icon
-                elif self.image_exits(day_icon):
-                    return day_icon
-                else:
-                    return unknown_icon          
+        if self.is_night(lat, long):
+            if self.image_exits(night_icon):
+                return night_icon
+            elif self.image_exits(day_icon):
+                return day_icon
+            else:
+                return unknown_icon          
         else:
             if self.image_exits(day_icon):
                 return day_icon
@@ -100,7 +99,7 @@ class WeatherUtil:
         location.lat=lat
         location.long = long
         location.date = now
-        sun = ephem.Sun()        
+        sun = ephem.Sun()        # @UndefinedVariable
         suntimes = {"sunrise": ephem.localtime(location.next_rising(sun)),"sunset":ephem.localtime(location.next_setting(sun))}
         return suntimes
         

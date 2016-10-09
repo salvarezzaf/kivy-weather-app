@@ -1,0 +1,32 @@
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+<AddLocation>:
+	results: search_results_list
+	search_input: city_input
+	orientation: "vertical"
+	BoxLayout:		
+		height: "40sp"
+		size_hint_y: None
+		IconFontButton:
+			size_hint_x: 10
+			text: u'\uf00d'
+			halign: 'left'
+		Label:
+			size_hint_x: 80
+			font_name: "OpenSans"
+			font_size: "25sp"
+			text: "Add New City"
+		IconFontButton:
+			size_hint_x: 10
+	BoxLayout:
+		height: "40sp"
+		size_hint_y: None
+		TextInput:
+			id: city_input
+			on_text: root.search_city()
+	ListView:
+		id: search_results_list
+		adapter:
+			ListAdapter(data=[], cls=ListItemButton)	
+			

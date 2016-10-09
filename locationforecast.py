@@ -20,9 +20,9 @@ class LocationForecast(BoxLayout):
         request = UrlRequest(forecast_url_formatted, self.create_forecast_wrapper)
     
     def create_forecast_wrapper(self, request, data):
-        for forecast in data['forecast']['simpleforecast']['forecastday'][1:]:
+        for forecast in data['forecast']['simpleforecast']['forecastday']:
             current_forecast = Factory.DayForecastWrapper()
-            current_forecast.forecast_img = self.util.get_icon_for_conditions(forecast['icon'])
+            #current_forecast.forecast_img = self.util.get_icon_for_conditions(forecast['icon'])
             current_forecast.forecast_txt = forecast['conditions']
             high_temp = str(forecast['high']['celsius'])
             low_temp = str(forecast['low']['celsius'])
