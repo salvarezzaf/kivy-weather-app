@@ -1,5 +1,7 @@
 <LocationForecast>:
 	wrapper: wrapper
+	height: "180sp"
+	size_hint_y: None
 	BoxLayout:
 		orientation: "horizontal"			
 		id: wrapper
@@ -14,12 +16,20 @@
 	BoxLayout:
 		orientation: "vertical"
 		AsyncImage:
+			height: "80sp"
+			size_hint_y: None
 			source: root.forecast_img
 		Label:
+			height: "30sp"
+			size_hint_y: None
 			text: root.forecast_txt
 		Label:
+			height: "30sp"
+			size_hint_y: None
 			text: root.hilowtemps
 		Label:
+			height: "30sp"
+			size_hint_y: None
 			text: root.day
 		
 	
