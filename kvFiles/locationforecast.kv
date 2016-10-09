@@ -1,0 +1,28 @@
+<LocationForecast>:
+	wrapper: wrapper
+	BoxLayout:
+		orientation: "horizontal"			
+		id: wrapper
+		
+
+
+<DayForecastWrapper@BoxLayout>
+	forecast_img: ""
+	forecast_txt: "" 
+	hilowtemps: "" 
+	day: ""	
+	BoxLayout:
+		orientation: "vertical"
+		AsyncImage:
+			source: root.forecast_img
+		Label:
+			text: root.forecast_txt
+		Label:
+			text: root.hilowtemps
+		Label:
+			text: root.day
+		
+	
+	
+		
+			
