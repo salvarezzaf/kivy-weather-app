@@ -1,9 +1,26 @@
 <CurrentCondition>:
 	BoxLayout:
 		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			height: "40sp"
+			size_hint_y: None
+			IconFontButton:
+				size_hint_x: 10
+				text: u'\uf0c9'
+				halign: 'left'
+			Label:
+				size_hint_x: 80
+				font_name: "OpenSans"
+				font_size: "25sp"
+				text: root.current_location_name	
+			IconFontButton:
+				size_hint_x: 10
+				text: u'\uf013'
+				halign: 'right'	
 		Label:
 			font_name: "OpenSans"
-			font_size: "40sp"
+			font_size: "30sp"
 			text: root.current_temp
 		AsyncImage:
 			source: root.current_condition_img
