@@ -20,7 +20,8 @@ class WeatherUtil:
         Returns:
             string value of the option is exists else none        
     """
-    def get_property_from_config_file(self, section, option):
+    @staticmethod
+    def get_property_from_config_file(section, option):
         configOption = {}
         config = ConfigParser.ConfigParser()
         config.read("config/configuration.ini")
@@ -38,15 +39,15 @@ class WeatherUtil:
         Returns:
             string corresponding to icon path in img folder
         
-    """    
-    def get_icon_for_conditions(self,iconName,lat,long):
+    """ 
+    def get_icon_for_conditions(self,iconName,lat,long,forecast):
         base_path = "img/"
         img_ext = ".png"
         night_icon = base_path + iconName + "night" + img_ext
         day_icon = base_path + iconName + img_ext
         unknown_icon = base_path + "unknown" + img_ext
         
-        if self.is_night(lat, long):
+        if self.is_night(lat, long) and not forecast:
             if self.image_exits(night_icon):
                 return night_icon
             elif self.image_exits(day_icon):

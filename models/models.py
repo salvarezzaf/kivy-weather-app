@@ -11,6 +11,7 @@ class Location(Base):
     
     id = Column(Integer, primary_key=True)
     location_name = Column(String, nullable= False)
+    location_code = Column(String, nullable= False)
     location_lat = Column(String, nullable = False)
     location_long = Column(String, nullable = False)
     isDefault = Column(Boolean, nullable = False)
