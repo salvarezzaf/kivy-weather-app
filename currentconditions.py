@@ -2,9 +2,11 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty  # @UnresolvedImport
 from kivy.network.urlrequest import UrlRequest
 from weatherutil import WeatherUtil
+from dbutil import DbUtil
 
 class CurrentCondition(BoxLayout):
     util = WeatherUtil()
+    db_util = DbUtil()
     current_location_name = StringProperty()
     current_condition_text = StringProperty()
     current_condition_img = StringProperty()
@@ -17,10 +19,11 @@ class CurrentCondition(BoxLayout):
         self.getCurrentConditions()
     
     def getCurrentConditions(self):
-        conditions_url = self.util.get_property_from_config_file("WeatherUrls", "CurrentConditions")
-        forecast_url = self.util.get_property_from_config_file("WeatherUrls", "Forecast")
-        conditions_url_formatted = conditions_url.format("GB","Glasgow")
-        forecast_url_formatted = forecast_url.format("GB","Glasgow")
+        default_location = self.db_util.get_default()
+        conditions_url = WeatherUtil.get_property_from_config_file("WeatherUrls", "CurrentConditions")
+        forecast_url = WeatherUtil.get_property_from_config_file("WeatherUrls", "Forecast")
+        conditions_url_formatted = conditions_url.format(default_location.location_code,default_location.location_name)
+        forecast_url_formatted = forecast_url.format(default_location.location_code,default_location.location_name)
         request = UrlRequest(conditions_url_formatted,self.parseCurrentWeatherData)
         highlowRequest = UrlRequest(forecast_url_formatted, self.parseHighLowTemperature)
     
@@ -32,7 +35,7 @@ class CurrentCondition(BoxLayout):
         self.current_condition_text = data['current_observation']['weather']
         self.current_condition_img = self.util.get_icon_for_conditions(data['current_observation']['icon'],
                                                                     data['current_observation']['display_location']['latitude'],
-                                                                    data['current_observation']['display_location']['longitude'])
+                                                                    data['current_observation']['display_location']['longitude'], False)
         self.current_temp = str(data['current_observation']['temp_c']) + self.degree_symbol
     
     def parseHighLowTemperature(self,request,data):
