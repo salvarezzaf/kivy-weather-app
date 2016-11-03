@@ -35,9 +35,10 @@ class DbUtil():
     def get_default(self):
         session = self.create_db_session()
         return session.query(Location).filter(Location.isDefault==True).first()
-    
+    '''
     @staticmethod
     def save_startup_location(session):
         statup_loc = Location(location_name="Glasgow",location_code="UK",location_lat="55.86999893",location_long="-4.42999983", isDefault=True)
         session.add(statup_loc)
         session.commit()
+    '''

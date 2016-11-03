@@ -1,5 +1,5 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import ObjectProperty  # @UnresolvedImport
+from kivy.properties import ObjectProperty, ListProperty  # @UnresolvedImport
 from kivy.uix.listview import ListItemButton
 
 from weatherutil import WeatherUtil
@@ -55,4 +55,4 @@ class AddLocation(BoxLayout):
 
 
 class LocationButton(ListItemButton):
-    pass
+    location = ListProperty()
