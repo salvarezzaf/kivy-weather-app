@@ -125,4 +125,3 @@ class WeatherUtil:
         
     def image_exits(self, icon):
         return os.path.isfile(icon)
-      

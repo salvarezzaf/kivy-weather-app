@@ -1,14 +1,12 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty  # @UnresolvedImport
 from kivy.uix.listview import ListItemButton
-
 from weatherutil import WeatherUtil
 from kivy.network.urlrequest import UrlRequest
+from dbutil import DbUtil
 import json
 import sys
 import urllib
-from models.models import Location
-from dbutil import DbUtil
 
 
 class AddLocation(BoxLayout):
@@ -40,18 +38,6 @@ class AddLocation(BoxLayout):
         del self.results.adapter.data[:]
         self.results.adapter.data.extend(cities)
         self.results._trigger_reset_populate
-
-    def save_selection(self):
-
-        for city in self.cached_results['RESULTS']:
-
-            format_loc_name = city['name'].split(",")
-            selected_location = Location(location_name=format_loc_name[0], location_code=city['c'],
-                                         location_lat=city['lat'], location_long=city['lon'], isDefault=True)
-            if not self.util.location_exists(format_loc_name[0]):
-                self.util.remove_existing_default()
-                self.util.save(selected_location)
-            break
 
 
 class LocationButton(ListItemButton):
