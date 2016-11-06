@@ -20,6 +20,7 @@ class StoredLocations(BoxLayout):
                 if location.isDefault:
                     loc_widget.location_name = location.location_name+" (Default)"
                     loc_widget.default_or_not = u"\uf005"
+                    loc_widget.is_disabled = True
                 else:
                     loc_widget.location_name = location.location_name
                     loc_widget.default_or_not = u"\uf067"

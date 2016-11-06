@@ -56,9 +56,11 @@
 <LocationWrapper@BoxLayout>:
     default_or_not: ""
     location_name: ""
+    is_disabled: False
     IconFontButton:
         size_hint_x: 10
         text: root.default_or_not
+        disabled: root.is_disabled
         halign: 'left'
         on_press: app.root.add_as_new_default(root.location_name)
     Label:
@@ -68,6 +70,7 @@
         text: root.location_name
     IconFontButton:
         id: location_name
+        disabled: root.is_disabled
         size_hint_x: 10
         text: u'\uf014'
         halign: 'right'
