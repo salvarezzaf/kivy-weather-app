@@ -4,22 +4,25 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.utils import get_color_from_hex
 from kivy.core.window import Window
-from kivy.core.text import LabelBase
+from kivy.core.text import LabelBase, Label
 
 from addlocation import AddLocation
 from currentconditions import CurrentCondition
 from dbutil import DbUtil
 from locationforecast import LocationForecast
+from storedlocations import StoredLocations
 from weatherutil import WeatherUtil
 
 Builder.load_file("kvFiles/currentconditions.kv")
 Builder.load_file("kvFiles/buttons.kv")
 Builder.load_file("kvFiles/locationforecast.kv")
 Builder.load_file("kvFiles/addlocation.kv")
+Builder.load_file("kvFiles/storedlocations.kv")
 
 
 class YamaRoot(BoxLayout):
     current_conditions = ObjectProperty()
+    fav_locations = ObjectProperty()
     forecast = ObjectProperty()
     add_location = ObjectProperty()
     db_util = DbUtil()
@@ -55,6 +58,22 @@ class YamaRoot(BoxLayout):
             self.clear_widgets()
             self.create_conditions_widget()
             self.create_forecast_widget()
+
+    def show_fav_locations(self):
+        self.clear_widgets()
+        self.fav_locations = StoredLocations()
+        self.fav_locations.get_favourite_locations()
+        self.add_widget(self.fav_locations)
+
+    def add_as_new_default(self, location_name):
+        isDefault= "(Default)"
+        if isDefault in location_name:
+            loc_splitted = id.split(" ")
+            location_name = loc_splitted[0]
+        self.db_util.remove_existing_default()
+        self.db_util.set_default(location_name)
+        self.show_fav_locations()
+
 
 
 class YamaApp(App):

@@ -1,0 +1,73 @@
+<StoredLocations>:
+    orientation: "vertical"
+    wrapper: wrapper
+    BoxLayout:
+	    orientation: "horizontal"
+		height: "40sp"
+		size_hint_y: None
+		IconFontButton:
+		    size_hint_x: 10
+			text: u'\uf015'
+			halign: 'left'
+			on_press: app.root.load_startup_widget()
+		Label:
+		    size_hint_x: 80
+			font_name: "OpenSans"
+			font_size: "25sp"
+			text: "Favourite Locations"
+		IconFontButton:
+			size_hint_x: 10
+			text: u'\uf013'
+			halign: 'right'
+    BoxLayout:
+        height: "40sp"
+		size_hint_y: None
+	ScrollView:
+		size: self.size
+		GridLayout:
+		    id: wrapper
+		    size_hint_y: None
+		    cols: 1
+		    row_default_height: '40dp'
+            row_force_default: True
+            spacing: 0, 20
+            padding: 0, 0
+    GridLayout:
+        size_hint_y: None
+		cols: 1
+		row_default_height: '60dp'
+        row_force_default: True
+        spacing: 0, 0
+        padding: 0, 0
+	    IconFontButton:
+	        font_size: "55sp"
+			text: u'\uf055'
+			halign: 'left'
+			on_press: app.root.create_add_city_widget()
+		Label:
+			font_name: "OpenSans"
+			font_size: "20sp"
+			text: "Add new location"
+    BoxLayout:
+        height: "40sp"
+		size_hint_y: None
+
+
+<LocationWrapper@BoxLayout>:
+    default_or_not: ""
+    location_name: ""
+    IconFontButton:
+        size_hint_x: 10
+        text: root.default_or_not
+        halign: 'left'
+        on_press: app.root.add_as_new_default(root.location_name)
+    Label:
+        size_hint_x: 80
+        font_name: "OpenSans"
+        font_size: "25sp"
+        text: root.location_name
+    IconFontButton:
+        id: location_name
+        size_hint_x: 10
+        text: u'\uf014'
+        halign: 'right'

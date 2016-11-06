@@ -65,6 +65,22 @@ class DbUtil():
         session = self.create_db_session()
         return session.query(Location).filter(Location.isDefault == True).first()
 
+    """
+        Utility method to retrieve all favourite locations stored in database
+
+    """
+    def find_all(self):
+        session = self.create_db_session()
+        return session.query(Location).all()
+
+
+    def set_default(self, location_name):
+        session = self.create_db_session()
+        location = session.query(Location).filter(Location.location_name==location_name).first()
+        location.isDefault=True
+        session.commit()
+
+
     # TODO Refactor current query methods to have centralize place to perform queries
     def save_selected_location(self, location):
         search_query = WeatherUtil.get_property_from_config_file("WeatherUrls", "SearchLocation")
