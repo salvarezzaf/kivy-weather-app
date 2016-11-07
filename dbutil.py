@@ -1,5 +1,6 @@
 import urllib
 import requests
+from sqlalchemy import desc
 from sqlalchemy.engine import create_engine
 from models.models import Base, Location
 import os
@@ -71,15 +72,15 @@ class DbUtil():
     """
     def find_all(self):
         session = self.create_db_session()
-        return session.query(Location).all()
-
-
+        return session.query(Location).order_by(desc(Location.isDefault == True)).all()
+    """
+        Utility method to set a new location as default
+    """
     def set_default(self, location_name):
         session = self.create_db_session()
         location = session.query(Location).filter(Location.location_name==location_name).first()
-        location.isDefault=True
+        location.isDefault = True
         session.commit()
-
 
     # TODO Refactor current query methods to have centralize place to perform queries
     def save_selected_location(self, location):

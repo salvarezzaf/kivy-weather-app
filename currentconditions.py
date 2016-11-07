@@ -1,3 +1,5 @@
+import urllib
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty  # @UnresolvedImport
 from kivy.network.urlrequest import UrlRequest
@@ -19,8 +21,8 @@ class CurrentCondition(BoxLayout):
         default_location = self.db_util.get_default()
         conditions_url = WeatherUtil.get_property_from_config_file("WeatherUrls", "CurrentConditions")
         forecast_url = WeatherUtil.get_property_from_config_file("WeatherUrls", "Forecast")
-        conditions_url_formatted = conditions_url.format(default_location.location_code, default_location.location_name)
-        forecast_url_formatted = forecast_url.format(default_location.location_code, default_location.location_name)
+        conditions_url_formatted = conditions_url.format(default_location.location_code, urllib.quote(default_location.location_name))
+        forecast_url_formatted = forecast_url.format(default_location.location_code, urllib.quote(default_location.location_name))
         request = UrlRequest(conditions_url_formatted, self.parse_current_weather_data)
         highlowRequest = UrlRequest(forecast_url_formatted, self.parse_high_low_temperature)
     

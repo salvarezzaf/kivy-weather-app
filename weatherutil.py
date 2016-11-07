@@ -59,8 +59,7 @@ class WeatherUtil:
                 return day_icon
             else:
                 return unknown_icon    
-            
-    
+
     """
         Check if current time is within night time, if it is
         function returns true or false.

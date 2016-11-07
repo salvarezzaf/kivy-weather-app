@@ -1,3 +1,5 @@
+import urllib
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty  # @UnresolvedImport
 from kivy.network.urlrequest import UrlRequest
@@ -16,7 +18,7 @@ class LocationForecast(BoxLayout):
     def get_weather_forecast(self):
         self.default_location = self.db_util.get_default()
         forecast_url = WeatherUtil.get_property_from_config_file("WeatherUrls", "Forecast")
-        forecast_url_formatted = forecast_url.format(self.default_location.location_code, self.default_location.location_name)
+        forecast_url_formatted = forecast_url.format(self.default_location.location_code, urllib.quote(self.default_location.location_name))
         request = UrlRequest(forecast_url_formatted, self.create_forecast_wrapper)
 
     def create_forecast_wrapper(self, request, data):

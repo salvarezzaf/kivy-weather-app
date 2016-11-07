@@ -23,7 +23,7 @@ class StoredLocations(BoxLayout):
                     loc_widget.is_disabled = True
                 else:
                     loc_widget.location_name = location.location_name
-                    loc_widget.default_or_not = u"\uf067"
+                    loc_widget.default_or_not = u"\uf006"
 
                 self.wrapper.add_widget(loc_widget)
 
