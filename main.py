@@ -66,12 +66,12 @@ class YamaRoot(BoxLayout):
         self.add_widget(self.fav_locations)
 
     def add_as_new_default(self, location_name):
-        isDefault= "(Default)"
-        if isDefault in location_name:
-            loc_splitted = id.split(" ")
-            location_name = loc_splitted[0]
         self.db_util.remove_existing_default()
         self.db_util.set_default(location_name)
+        self.show_fav_locations()
+
+    def remove_location(self, location_name):
+        self.db_util.delete_location(location_name)
         self.show_fav_locations()
 
 

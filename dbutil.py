@@ -82,6 +82,11 @@ class DbUtil():
         location.isDefault = True
         session.commit()
 
+    def delete_location(self, location_name):
+        session = self.create_db_session()
+        session.query(Location).filter(Location.location_name==location_name).delete()
+        session.commit()
+
     # TODO Refactor current query methods to have centralize place to perform queries
     def save_selected_location(self, location):
         search_query = WeatherUtil.get_property_from_config_file("WeatherUrls", "SearchLocation")
