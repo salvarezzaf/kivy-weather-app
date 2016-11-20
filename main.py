@@ -7,10 +7,12 @@ from kivy.core.window import Window
 from kivy.core.text import LabelBase, Label
 
 from addlocation import AddLocation
+from appsettings import AppSettings
 from currentconditions import CurrentCondition
 from dbutil import DbUtil
 from locationforecast import LocationForecast
 from storedlocations import StoredLocations
+from models.models import Settings
 from weatherutil import WeatherUtil
 
 Builder.load_file("kvFiles/currentconditions.kv")
@@ -18,6 +20,7 @@ Builder.load_file("kvFiles/buttons.kv")
 Builder.load_file("kvFiles/locationforecast.kv")
 Builder.load_file("kvFiles/addlocation.kv")
 Builder.load_file("kvFiles/storedlocations.kv")
+Builder.load_file("kvFiles/appsettings.kv")
 
 
 class YamaRoot(BoxLayout):
@@ -74,7 +77,15 @@ class YamaRoot(BoxLayout):
         self.db_util.delete_location(location_name)
         self.show_fav_locations()
 
+    def show_app_settings(self):
+        self.clear_widgets()
+        self.db_util.load_default_settings_if_empty()
+        settings = AppSettings()
+        settings.get_default_tem_unit()
+        self.add_widget(settings)
 
+    def save_temp_setting(self, tem_unit):
+        self.db_util.save_or_update_settings(tem_unit)
 
 class YamaApp(App):
     pass

@@ -2,7 +2,7 @@ import urllib
 import requests
 from sqlalchemy import desc
 from sqlalchemy.engine import create_engine
-from models.models import Base, Location
+from models.models import Base, Location, Settings
 import os
 from sqlalchemy.orm.session import sessionmaker
 
@@ -105,3 +105,29 @@ class DbUtil():
                 self.remove_existing_default()
                 self.save(selected_location)
             break
+
+    def save_or_update_settings(self, temp_unit):
+        session = self.create_db_session()
+        default_settings = session.query(Settings).all()
+        if(len(default_settings) > 0):
+            settings = default_settings[0]
+            settings.temp_unit = temp_unit
+            session.commit()
+        else:
+            settings = Settings(temp_unit=temp_unit)
+            self.save(settings)
+
+
+    def get_default_tem_unit(self):
+        session = self.create_db_session()
+        default_settings = session.query(Settings).all()
+        return default_settings[0].temp_unit
+
+    def load_default_settings_if_empty(self):
+        session = self.create_db_session()
+        default_settings = session.query(Settings).all()
+        if (len(default_settings) == 0):
+            settings = Settings(temp_unit="celsius")
+            self.save(settings)
+
+

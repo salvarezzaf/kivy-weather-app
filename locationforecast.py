@@ -26,8 +26,8 @@ class LocationForecast(BoxLayout):
             current_forecast = Factory.DayForecastWrapper()
             current_forecast.forecast_img = self.util.get_icon_for_conditions(forecast['icon'], self.default_location.location_lat, self.default_location.location_long, True)
             current_forecast.forecast_txt = forecast['conditions']
-            high_temp = str(forecast['high']['celsius'])
-            low_temp = str(forecast['low']['celsius'])
+            high_temp = str(forecast['high'][self.db_util.get_default_tem_unit()])
+            low_temp = str(forecast['low'][self.db_util.get_default_tem_unit()])
             current_forecast.hilowtemps = high_temp + self.degree_symbol + "/" + low_temp + self.degree_symbol  
             current_forecast.day = forecast['date']['weekday']
             self.wrapper.add_widget(current_forecast)

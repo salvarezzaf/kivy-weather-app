@@ -15,3 +15,9 @@ class Location(Base):
     location_lat = Column(String, nullable = False)
     location_long = Column(String, nullable = False)
     isDefault = Column(Boolean, nullable = False)
+
+class Settings(Base):
+    __tablename__ = 'settings'
+
+    id = Column(Integer, primary_key=True)
+    temp_unit = Column(String, nullable= False)

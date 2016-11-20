@@ -1,0 +1,62 @@
+#:import Factory kivy.factory.Factory
+#:set color_button (52,73,94,0.4)
+#:set color_button_pressed (52,73,94,0.4)
+#:set color_font   (1, 1, 1, 1)  # off white
+
+<AppSettings>:
+    orientation: "vertical"
+    current_temp_unit: ""
+    BoxLayout:
+	    orientation: "horizontal"
+		height: "40sp"
+		size_hint_y: None
+		IconFontButton:
+		    size_hint_x: 10
+			text: u'\uf015'
+			halign: 'left'
+			on_press: app.root.load_startup_widget()
+		Label:
+		    size_hint_x: 80
+			font_name: "OpenSans"
+			font_size: "25sp"
+			text: "Settings"
+		IconFontButton:
+            size_hint_x: 10
+            text: u'\uf0c9'
+            halign: 'right'
+            on_press: app.root.show_fav_locations()
+    BoxLayout:
+        height: "40sp"
+		size_hint_y: None
+	ScrollView:
+		size: self.size
+		GridLayout:
+		    size_hint_y: None
+		    cols: 1
+		    row_default_height: '40dp'
+            row_force_default: True
+            spacing: 0, 20
+            padding: 0, 0
+            BoxLayout:
+                Label:
+                    size_hint_x: 60
+                    font_name: "OpenSans"
+                    font_size: "20sp"
+                    text: "Temperature Unit"
+                    halign: 'left'
+                Spinner:
+                    text: root.current_temp_unit
+                    values: ('celsius', 'fahrenheit')
+                    background_color: color_button if self.state == 'normal' else color_button_pressed
+                    background_down: 'atlas://data/images/defaulttheme/spinner'
+                    color: color_font
+                    option_cls: Factory.get("MySpinnerOption")
+                    size_hint_x: 20
+                    on_text: app.root.save_temp_setting(self.text)
+                BoxLayout:
+                    size_hint_x: 20
+
+<MySpinnerOption@SpinnerOption>:
+    background_color: color_button if self.state == 'down' else color_button_pressed
+    background_down: 'atlas://data/images/defaulttheme/button'
+    color: color_font
