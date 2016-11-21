@@ -33,6 +33,7 @@ class YamaRoot(BoxLayout):
     def __init__(self, **kwargs):
         super(YamaRoot, self).__init__(**kwargs)
         self.load_startup_widget()
+        self.db_util.load_default_settings_if_empty()
 
     def show_current_conditions(self, location):
         self.db_util.save_selected_location(location)
@@ -88,7 +89,12 @@ class YamaRoot(BoxLayout):
         self.db_util.save_or_update_settings(tem_unit)
 
 class YamaApp(App):
-    pass
+
+    def on_pause(self):
+        return True
+
+    def on_resume(self):
+        pass
 
 if __name__ == '__main__':
     Window.clearcolor = get_color_from_hex('#34495e')
