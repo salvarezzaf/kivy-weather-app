@@ -1,9 +1,10 @@
-#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import LocationButton addlocation.LocationButton
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
-<ListItemButton>:
+<LocationButton>:
 	selected_color: 52,73,94,0.5
     deselected_color: 172,210,241,0.1
+    on_press: app.root.show_current_conditions(self.text)
 	
 <AddLocation>:
 	results: search_results_list
@@ -12,18 +13,15 @@
 	BoxLayout:		
 		height: "40sp"
 		size_hint_y: None
-		IconFontButton:
-			size_hint_x: 10
-			text: u'\uf00d'
-			halign: 'left'
-			on_release: app.root.current = 'currentconditions'
+		BoxLayout:
+		    size_hint_x: 10
 		Label:
 			size_hint_x: 80
 			font_name: "OpenSans"
 			font_size: "25sp"
 			text: "Add New City"
-		IconFontButton:
-			size_hint_x: 10
+		BoxLayout:
+		    size_hint_x: 10
     BoxLayout:
     	height: "30sp"
     	size_hint_y: None
@@ -35,6 +33,7 @@
 		TextInput:
 			size_hint_x: 80
 			id: city_input
+			hint_text: "Start typing to search"
 			on_text: root.search_query_city()
 		BoxLayout:
 			size_hint_x: 10
@@ -45,7 +44,7 @@
     		size_hint_x: 80
 			id: search_results_list
 			adapter:
-				ListAdapter(data=[], cls=ListItemButton, args_converter=root.args_converter)
+				ListAdapter(data=[], cls=LocationButton, args_converter=root.args_converter)
 		BoxLayout:
 			size_hint_x: 10	
 			

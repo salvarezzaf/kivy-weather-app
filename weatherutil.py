@@ -59,8 +59,7 @@ class WeatherUtil:
                 return day_icon
             else:
                 return unknown_icon    
-            
-    
+
     """
         Check if current time is within night time, if it is
         function returns true or false.
@@ -125,4 +124,3 @@ class WeatherUtil:
         
     def image_exits(self, icon):
         return os.path.isfile(icon)
-      

@@ -1,0 +1,6 @@
+.idea/
+*.pyc
+.designer/
+.project
+.pydevproject
+.gitignore

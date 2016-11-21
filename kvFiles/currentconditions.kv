@@ -9,7 +9,7 @@
 				size_hint_x: 10
 				text: u'\uf0c9'
 				halign: 'left'
-				on_release: app.root.current= 'addlocation'
+                on_press: app.root.show_fav_locations()
 			Label:
 				size_hint_x: 80
 				font_name: "OpenSans"
@@ -18,7 +18,8 @@
 			IconFontButton:
 				size_hint_x: 10
 				text: u'\uf013'
-				halign: 'right'	
+				halign: 'right'
+				on_press: app.root.show_app_settings()
 		Label:
 			font_name: "OpenSans"
 			font_size: "30sp"
@@ -33,4 +34,3 @@
 			font_name: "OpenSans"
 			font_size: "30sp"
 			text: root.high_low_temps
-			
