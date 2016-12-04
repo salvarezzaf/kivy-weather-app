@@ -6,4 +6,5 @@ install:
 - sudo pip install --upgrade pip virtualenv setuptools 
 - pip install Cython==0.23
 - pip install kivy
-script: nose2
+- pip install -r requirements.txt
+script: nosetests
