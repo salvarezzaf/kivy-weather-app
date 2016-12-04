@@ -1,4 +1,4 @@
-Cython==0.24.1
+Cython==0.23
 ephem==3.7.6.0
 freezegun==0.3.8
 funcsigs==1.0.2
