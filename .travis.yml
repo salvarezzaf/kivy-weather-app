@@ -1,7 +1,9 @@
 before_install:
-- sudo apt-get install cython
-
+- sudo apt-get install python-pip build-essential git python python-dev ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
 language: python
 python: "2.7"
-install: "pip install -r requirements.txt"
+install: 
+- sudo pip install --upgrade pip virtualenv setuptools 
+- pip install Cython==0.23
+- pip install kivy
 script: nose2
