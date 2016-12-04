@@ -1,0 +1,94 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "conditions": 1
+  }
+	}
+  ,	"current_observation": {
+		"image": {
+		"url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+		"title":"Weather Underground",
+		"link":"http://www.wunderground.com"
+		},
+		"display_location": {
+		"full":"Glasgow, United Kingdom",
+		"city":"Glasgow",
+		"state":"GLG",
+		"state_name":"United Kingdom",
+		"country":"UK",
+		"country_iso3166":"GB",
+		"zip":"00000",
+		"magic":"26",
+		"wmo":"03140",
+		"latitude":"55.86999893",
+		"longitude":"-4.26000023",
+		"elevation":"152.1"
+		},
+		"observation_location": {
+		"full":"Meadowside Quay Square, Glasgow, ",
+		"city":"Meadowside Quay Square, Glasgow",
+		"state":"",
+		"country":"GB",
+		"country_iso3166":"GB",
+		"latitude":"55.868660",
+		"longitude":"-4.319940",
+		"elevation":"9 ft"
+		},
+		"estimated": {
+		},
+		"station_id":"IGLASGOW18",
+		"observation_time":"Last Updated on December 4, 8:26 PM GMT",
+		"observation_time_rfc822":"Sun, 04 Dec 2016 20:26:04 +0000",
+		"observation_epoch":"1480883164",
+		"local_time_rfc822":"Sun, 04 Dec 2016 20:35:54 +0000",
+		"local_epoch":"1480883754",
+		"local_tz_short":"GMT",
+		"local_tz_long":"Europe/London",
+		"local_tz_offset":"+0000",
+		"weather":"Clear",
+		"temperature_string":"37.4 F (3.0 C)",
+		"temp_f":37.4,
+		"temp_c":3.0,
+		"relative_humidity":"78%",
+		"wind_string":"From the NW at 1.2 MPH Gusting to 2.5 MPH",
+		"wind_dir":"NW",
+		"wind_degrees":311,
+		"wind_mph":1.2,
+		"wind_gust_mph":"2.5",
+		"wind_kph":1.9,
+		"wind_gust_kph":"4.0",
+		"pressure_mb":"1027",
+		"pressure_in":"30.33",
+		"pressure_trend":"0",
+		"dewpoint_string":"31 F (-0 C)",
+		"dewpoint_f":31,
+		"dewpoint_c":-0,
+		"heat_index_string":"NA",
+		"heat_index_f":"NA",
+		"heat_index_c":"NA",
+		"windchill_string":"37 F (3 C)",
+		"windchill_f":"37",
+		"windchill_c":"3",
+		"feelslike_string":"37 F (3 C)",
+		"feelslike_f":"37",
+		"feelslike_c":"3",
+		"visibility_mi":"6.2",
+		"visibility_km":"10.0",
+		"solarradiation":"--",
+		"UV":"-1","precip_1hr_string":"-999.00 in ( 0 mm)",
+		"precip_1hr_in":"-999.00",
+		"precip_1hr_metric":" 0",
+		"precip_today_string":"-999.00 in (-25375 mm)",
+		"precip_today_in":"-999.00",
+		"precip_today_metric":"--",
+		"icon":"clear",
+		"icon_url":"http://icons.wxug.com/i/c/k/nt_clear.gif",
+		"forecast_url":"http://www.wunderground.com/global/stations/03140.html",
+		"history_url":"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=IGLASGOW18",
+		"ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=55.868660,-4.319940",
+		"nowcast":""
+	}
+}

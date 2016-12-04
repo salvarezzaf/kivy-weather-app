@@ -15,17 +15,18 @@ from weatherutil import WeatherUtil
 
 class DbUtil():
 
+    db_name_uri = 'sqlite:///weatherdb.sqlite3'
+
     """
         Create sqlite database if does not exists
         and initialize database session.
     """
     @staticmethod
-    def create_db_session():
-        db_name = 'sqlite:///weatherdb.sqlite3'
-        engine = create_engine(db_name)
+    def create_db_session(db_uri=db_name_uri):
+        engine = create_engine(db_uri)
         session_factory = sessionmaker(bind=engine)
         session = session_factory()
-        if not os.path.exists('weatherdb.sqlite3'):
+        if not os.path.exists(db_uri):
             Base.metadata.create_all(engine)  # @UndefinedVariable
         return session
     """

@@ -1,0 +1,15 @@
+{ "RESULTS": [
+	{
+		"name": "Glasgow, United Kingdom", 
+		"type": "city", 
+		"c": "GB",
+		"zmw": "00000.26.03140",
+		"tz": "Europe/London",
+		"tzs": "GMT",
+		"l": "/q/zmw:00000.26.03140",
+		"ll": "55.869999 -4.260000",
+		"lat": "55.869999",
+		"lon": "-4.260000"
+	}
+]
+}
