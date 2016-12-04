@@ -1,0 +1,14 @@
+Cython==0.24.1
+ephem==3.7.6.0
+freezegun==0.3.8
+funcsigs==1.0.2
+Kivy==1.9.1
+Kivy-Garden==0.1.4
+mock==2.0.0
+nose2==0.6.5
+pbr==1.10.0
+python-dateutil==2.6.0
+requests==2.10.0
+six==1.10.0
+SQLAlchemy==1.1.1
+virtualenv==15.1.0

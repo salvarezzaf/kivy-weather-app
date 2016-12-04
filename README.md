@@ -1,4 +1,4 @@
-# kivy-weather-app
+# kivy-weather-app [![Build Status](https://travis-ci.org/salvarezzaf/kivy-weather-app.svg?branch=master)](https://travis-ci.org/salvarezzaf/kivy-weather-app)
 Simple weather (mobile) app developed in Pyrthon and Kivy framework.
 
 
