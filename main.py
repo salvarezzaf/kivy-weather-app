@@ -1,26 +1,24 @@
 from kivy.app import App
+from kivy.core.text import LabelBase
+from kivy.core.window import Window
+from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.lang import Builder
 from kivy.utils import get_color_from_hex
-from kivy.core.window import Window
-from kivy.core.text import LabelBase, Label
 
-from addlocation import AddLocation
-from appsettings import AppSettings
-from currentconditions import CurrentCondition
-from dbutil import DbUtil
-from locationforecast import LocationForecast
-from storedlocations import StoredLocations
-from models.models import Settings
-from weatherutil import WeatherUtil
+from app.addlocation import AddLocation
+from app.appsettings import AppSettings
+from app.currentconditions import CurrentCondition
+from app.dbutil import DbUtil
+from app.locationforecast import LocationForecast
+from app.storedlocations import StoredLocations
 
-Builder.load_file("kvFiles/currentconditions.kv")
-Builder.load_file("kvFiles/buttons.kv")
-Builder.load_file("kvFiles/locationforecast.kv")
-Builder.load_file("kvFiles/addlocation.kv")
-Builder.load_file("kvFiles/storedlocations.kv")
-Builder.load_file("kvFiles/appsettings.kv")
+Builder.load_file("app/kvFiles/currentconditions.kv")
+Builder.load_file("app/kvFiles/buttons.kv")
+Builder.load_file("app/kvFiles/locationforecast.kv")
+Builder.load_file("app/kvFiles/addlocation.kv")
+Builder.load_file("app/kvFiles/storedlocations.kv")
+Builder.load_file("app/kvFiles/appsettings.kv")
 
 
 class YamaRoot(BoxLayout):
@@ -98,7 +96,7 @@ class YamaApp(App):
 
 if __name__ == '__main__':
     Window.clearcolor = get_color_from_hex('#34495e')
-    LabelBase.register("OpenSans", fn_regular="fonts/OpenSans-Regular.ttf")
-    LabelBase.register("FontAwesome", fn_regular="fonts/fontawesome-webfont.ttf")
+    LabelBase.register("OpenSans", fn_regular="app/fonts/OpenSans-Regular.ttf")
+    LabelBase.register("FontAwesome", fn_regular="app/fonts/fontawesome-webfont.ttf")
     DbUtil.create_db_session()
     YamaApp().run()

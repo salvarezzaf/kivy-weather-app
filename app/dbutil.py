@@ -1,11 +1,12 @@
+import os
 import urllib
+
 import requests
 from sqlalchemy import desc
 from sqlalchemy.engine import create_engine
-from models.models import Base, Location, Settings
-import os
 from sqlalchemy.orm.session import sessionmaker
 
+from app.models.models import Base, Location, Settings
 from weatherutil import WeatherUtil
 
 """

@@ -24,7 +24,7 @@ class WeatherUtil:
     def get_property_from_config_file(section, option):
         configOption = {}
         config = ConfigParser.ConfigParser()
-        config.read("config/configuration.ini")
+        config.read("app/config/configuration.ini")
         configOption[option] = config.get(section, option)
         return configOption.get(option)
     
@@ -41,7 +41,7 @@ class WeatherUtil:
         
     """ 
     def get_icon_for_conditions(self,iconName,lat,long,forecast):
-        base_path = "img/"
+        base_path = "app/img/"
         img_ext = ".png"
         night_icon = base_path + iconName + "night" + img_ext
         day_icon = base_path + iconName + img_ext
