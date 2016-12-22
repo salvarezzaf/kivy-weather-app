@@ -18,11 +18,10 @@ from test.testutils import TestUtils
 class TestCurrentConditions(unittest.TestCase):
 
     def setUp(self):
-        self.test_utils = TestUtils()
-        self.test_utils.start_kivy_windowing_stub()
+        TestUtils.start_kivy_windowing_stub()
         self.current_conditions = CurrentCondition()
-        self.data = self.test_utils.load_json_from_file("test/glasgow_conditions_response.json")
-        self.forecast = self.test_utils.load_json_from_file("test/forecast.json")
+        self.data = TestUtils.load_json_from_file("test/glasgow_conditions_response.json")
+        self.forecast = TestUtils.load_json_from_file("test/forecast.json")
         self.degree_symbol = u"\u00B0"
         self.current_temp = '3' + self.degree_symbol
         self.highlow_temps = '11' + self.degree_symbol + '/' + '6' + self.degree_symbol
@@ -44,4 +43,7 @@ class TestCurrentConditions(unittest.TestCase):
         self.assertEqual(str(self.current_conditions.current_condition_img), "app/img/clear.png")
         self.assertEqual(self.current_conditions.current_temp, self.current_temp)
         self.assertEqual(self.current_conditions.high_low_temps, self.highlow_temps)
+
+    def tearDown(self):
+        TestUtils.stop_kivy_windowing_stub()
 
